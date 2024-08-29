@@ -81,7 +81,7 @@ jobs:
           python -m pip install uv
           uv pip install --system hatch
           hatch -e tests.py${{ matrix.python-version }}-${{ matrix.airflow-version }} run pip freeze
-          hatch shell tests.py${{ matrix.python-version }}-${{ matrix.airflow-version }
+          hatch shell tests.py${{ matrix.python-version }}-${{ matrix.airflow-version }}
           pip install "apache-airflow-providers-amazon[s3fs]>=8.0.0"
           pip install "apache-airflow-providers-google"
 
