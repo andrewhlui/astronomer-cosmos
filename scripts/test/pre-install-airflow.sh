@@ -21,5 +21,11 @@ mv /tmp/constraint.txt.tmp /tmp/constraint.txt
 # Install Airflow with constraints
 pip install uv
 uv pip install "apache-airflow==$AIRFLOW_VERSION" --constraint /tmp/constraint.txt
+pip install apache-airflow-providers-cncf-kubernetes
+pip install apache-airflow-providers-amazon
+pip install apache-airflow-providers-docker
+pip install apache-airflow-providers-google
+pip install apache-airflow-providers-microsoft-azure
+pip install apache-airflow-providers-postgres
 uv pip install pydantic --constraint /tmp/constraint.txt
 rm /tmp/constraint.txt
