@@ -139,6 +139,8 @@ packages = ["/cosmos"]
 [tool.hatch.envs.tests]
 dependencies = [
     "astronomer-cosmos[tests]",
+    "apache-airflow-providers-amazon[s3fs]",
+    "apache-airflow-providers-google",
     "apache-airflow-providers-cncf-kubernetes>=5.1.1",
     "apache-airflow-providers-docker>=3.5.0",
     "apache-airflow-providers-microsoft-azure",
@@ -150,7 +152,7 @@ dependencies = [
     "Werkzeug<3.0.0",
     "apache-airflow~={matrix:airflow}.0,!=2.9.0,!=2.9.1",  # https://github.com/apache/airflow/pull/39670
 ]
-pre-install-commands = ["sh scripts/test/pre-install-airflow.sh {matrix:airflow} {matrix:python}"]
+# pre-install-commands = ["sh scripts/test/pre-install-airflow.sh {matrix:airflow} {matrix:python}"]
 
 [[tool.hatch.envs.tests.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
