@@ -13,7 +13,7 @@ fi
 
 echo "${VIRTUAL_ENV}"
 
-CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-$AIRFLOW_VERSION.0/constraints-$PYTHON_VERSION.txt"
+CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-$AIRFLOW_VERSION/constraints-$PYTHON_VERSION.txt"
 curl -sSL $CONSTRAINT_URL -o /tmp/constraint.txt
 # Workaround to remove PyYAML constraint that will work on both Linux and MacOS
 sed '/PyYAML==/d' /tmp/constraint.txt > /tmp/constraint.txt.tmp
@@ -21,11 +21,5 @@ mv /tmp/constraint.txt.tmp /tmp/constraint.txt
 # Install Airflow with constraints
 pip install uv
 uv pip install "apache-airflow==$AIRFLOW_VERSION" --constraint /tmp/constraint.txt
-pip install "apache-airflow-providers-cncf-kubernetes<=8.3.4"
-pip install "apache-airflow-providers-amazon<=8.27.0"
-pip install "apache-airflow-providers-docker<=3.12.3"
-pip install "apache-airflow-providers-google<=10.21.1"
-pip install "apache-airflow-providers-microsoft-azure<=10.3.0"
-pip install "apache-airflow-providers-postgres<=5.11.3"
 uv pip install pydantic --constraint /tmp/constraint.txt
 rm /tmp/constraint.txt
